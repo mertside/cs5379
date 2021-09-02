@@ -17,46 +17,54 @@ int main( int argc, char **argv)
   MPI_Init( &argc, &argv );
   MPI_Comm_rank(MPI_COMM_WORLD, &pid);
   MPI_Comm_size(MPI_COMM_WORLD, &np);
+  
+  char name[80];
+  int length;
+  MPI_Get_processor_name(name, &length);
+
+  printf("\nHello, MPI! Rank: %d \nTotal: %d \nMachine: %s\n", pid, np, name);
 
   if(pid == 0) { // generate data[]
     for(i=0; i<50; i++)
       for(j=0; j<100; j++)
-        data[i][j] = i+ j*j ;
+        data[i][j] = i+ j*j;
     mtag = 1 ;
-    MPI_Isend(data, 5000, MPI_INT, 1, mtag, MPI_COMM_WORLD, &req_s) ;
+    MPI_Isend(data, 5000, MPI_INT, 1, mtag, MPI_COMM_WORLD, &req_s);
     for(i=50; i<100; i++)
       for(j=0; j<100; j++)
-        data[i][j] = generate_data(i,j) ;
+        data[i][j] = generate_data(i,j);
 
     for(i=50; i<100; i++) {
-      row_sum[i] = 0 ;
+      row_sum[i] = 0;
       for(j=0; j<100; j++)
-         row_sum[i] += data[i][j] ;
+         row_sum[i] += data[i][j];
     }
-    MPI_Wait(&req_s, &status) ;
+    MPI_Wait(&req_s, &status);
 
    /*** receive computed row_sums from  pid 1 ***/
     mtag = 2 ;
-    MPI_Recv(row_sum, 50, MPI_INT, 1, mtag, MPI_COMM_WORLD, &status) ;
+    MPI_Recv(row_sum, 50, MPI_INT, 1, mtag, MPI_COMM_WORLD, &status);
     for(i=0; i<100; i++) {
-       printf(" %d  ", row_sum[i]) ;
+       printf(" %d  ", row_sum[i]);
        if(i%5 ==0) printf("\n");
     }
   }
   else { /*** pid == 1 ***/
     mtag = 1 ;
-    MPI_Recv(data, 5000, MPI_INT, 0, mtag, MPI_COMM_WORLD, &status) ;
+    MPI_Recv(data, 5000, MPI_INT, 0, mtag, MPI_COMM_WORLD, &status);
 
     for(i=0; i<50; i++) {
       row_sum[i] = 0 ;
       for(j=0; j<100; j++)
-         row_sum[i] += data[i][j] ;
+         row_sum[i] += data[i][j];
     }
 
 
    /*** Send computed row_sums to pid 0 ***/
     mtag = 2 ;
-    MPI_Send(row_sum, 50, MPI_INT, 0, mtag, MPI_COMM_WORLD) ;
+    MPI_Send(row_sum, 50, MPI_INT, 0, mtag, MPI_COMM_WORLD);
+         
+
   }
 
 
