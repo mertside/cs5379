@@ -73,16 +73,20 @@ int main(int argc, char **argv)
     mtag = 1 ;
     MPI_Recv(data, 5000, MPI_INT, 0, mtag, MPI_COMM_WORLD, &status);
 
+    mtag = 2;
     // sum data[] from 0 to 49
     for(i = 0; i < 50; i++) {
       row_sum[i] = 0 ;
       for(j = 0; j < 100; j++)
          row_sum[i] += data[i][j];
-    }
+      MPI_Isend(data, 5000, MPI_INT, 0, mtag, MPI_COMM_WORLD, &req_r);
+      // mtag++;
+    } 
+    MPI_Wait(&req_r, &status);
 
     /*** Send computed row_sums to pid 0 ***/
-    mtag = 2;
-    MPI_Send(row_sum, 50, MPI_INT, 0, mtag, MPI_COMM_WORLD);
+    // mtag = 2;
+    // MPI_Send(row_sum, 50, MPI_INT, 0, mtag, MPI_COMM_WORLD);
          
   }
 
