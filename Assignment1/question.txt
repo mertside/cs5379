@@ -1,0 +1,53 @@
+Assignment #1
+
+===
+
+From: Zhuang, Yu <Yu.Zhuang@ttu.edu>
+Date: Tuesday, September 7, 2021 at 12:06
+To: Arca, Sevgi <Sevgi.Arca@ttu.edu>
+Subject: CS4379/5379 Syllabus, Assignment 1
+Dear CS4379/5379 students,
+Since there are new students added to the class, I'm re-sending the syllabi.  
+
+Also,  as I saw from questions/discussions in classes about Assignment 1, I'd like to point out more details for you to focus for the assignment.
+
+Assignment 1 was given in detail during a class and a brief email later indicated the focus of the assignment.  Now I'd like to describe below what was discussed in the class for the assignment.
+
+The given code (attached) is to calculate the sums of rows for an array data[][], where the process with pid==0 generates the data, send half the data to the process with pid==1 for pid1 to calculate the sums of the 50 rows, and pid0 calculates the row sums of the remaining 50 rows of the data. The code shows how overlapping of computation and communication can be done for  pid0.  But on the process with pid==1, there is no overlapping of computation and communication. Simply replacing MPI_Recv() by MPI_Irecv() on  pid1 will not work.  Also will not work by replacing MPI_Recv() by MPI_Irecv() immediately followed by MPI_Wait() on pid1.  
+
+So Assignment 1 is to keep the same computation partition among the two processes,  but achieve significant   overlapping of computation and communication on the process with pid==1.  That means, the process with pid==0 still generates all data, send half the data to pid1 for it to calculate the row sums from row 0 through row 49, and pid0 calculates the remaining half row sums (row50 through row 99).  By significant, I do not require you achieve overlapping for all possible cases, as long as there is significant overlapping.  My hint on achieving overlapping is how pid0 sends half of the data to pid1 and how pid1 receives them from pid0.
+
+
+Yu Zhuang
+Associate Professor
+Dept of Computer Science
+Texas Tech University
+Lubbock, Texas 79409-3104
+Phone: 806-834-7753
+Fax: 806-742-3519
+http://www.myweb.ttu.edu/yzhuang/
+
+===
+
+From: Zhuang, Yu
+Sent: Tuesday, August 31, 2021 9:06 PM
+To: Arca, Sevgi
+Subject: CS4379/5379 Assignment 1
+
+CS 4379/5379 students,
+Attached is the code that computes row sums of matrix data[100][100] by 2 processes.
+
+In this assignment, please rewrite the code so that on pid==1, there is significant overlapping of communication with computation.  For the assignment, it is enough to overlap only the receiving the first 50 row of data[][] with computation.
+
+Assignment 1 is due on Sep 10 before midnight. Please send your code to our TA (she is copied). One group needs to send only one copy. Be sure to put all group members' names on the code.
+
+
+Yu Zhuang
+Associate Professor
+Dept of Computer Science
+Texas Tech University
+Lubbock, Texas 79409-3104
+Phone: 806-834-7753
+Fax: 806-742-3519
+http://www.myweb.ttu.edu/yzhuang/
+
