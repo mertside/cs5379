@@ -23,7 +23,6 @@ int main(int argc, char** argv)
 
   printf("%d is after barrier\n", pid);
 
-
   MPI_Finalize();
   return 0;
 }
@@ -69,15 +68,3 @@ void barrier(int pid, int np)
      MPI_Send(&message, 1, MPI_INT, leftChild, mtag, MPI_COMM_WORLD);
      // MPI_Isend(&message, 1, MPI_INT, leftChild, mtag, MPI_COMM_WORLD, &lReq);
 
-}
-
-/*
-3 is before barrier
-0 is before barrier
-2 is before barrier
-3 is after barrier
-1 is before barrier
-1 is after barrier
-0 is after barrier
-2 is after barrier
-*/
