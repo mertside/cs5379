@@ -1,0 +1,77 @@
+Assignment #2
+
+From: Zhuang, Yu <Yu.Zhuang@ttu.edu>
+Date: Thursday, September 23, 2021 at 12:44
+To: Arca, Sevgi <Sevgi.Arca@ttu.edu>
+Subject: Re: CS4379/5379 Assignment 2 due date
+CS 4379/5379 students,
+I dropped "er" in an intended word "sender" in the previous email, here is the updated description of Assignment 2.
+
+The requirement of Assignment 2 is to write
+(1) a short description of your technical idea for implementing barrier using MPI_Send()'s and MPI-Recv()'s, and
+(2) a MPI C code,  containing a segment of code that
+(2.1) implements your technical idea for implementing the functionality of barrier using  MPI_Send()'s and MPI-Recv()'s, and
+(2.2) the code has a parallel time complexity of no more than 8 log_2 N steps, where N is the number of processes (for simplicity, you may assume N is a power of 2), and a step refers to time incurred by the sending of a message by a sender and the receiving of the message by the receiver, and if there are multiple pairs of simultaneous send-receive between different non-overlapping pairs of sender-receiver, it is also considered one step (please see discussions in previous 3 classes for the communication steps in implementing broadcast and many2one communications using send()'s and recv()'s ).
+
+
+Yu Zhuang
+Associate Professor
+Dept of Computer Science
+Texas Tech University
+Lubbock, Texas 79409-3104
+Phone: 806-834-7753
+Fax: 806-742-3519
+http://www.myweb.ttu.edu/yzhuang/
+
+
+________________________________________
+From: Zhuang, Yu <Yu.Zhuang@ttu.edu>
+Sent: Thursday, September 23, 2021 12:41 PM
+To: Arca, Sevgi
+Subject: Re: CS4379/5379 Assignment 2 due date
+
+CS 4379/5379 students,
+
+The requirement of Assignment 2 is to write
+(1) a short description of your technical idea for implementing barrier using MPI_Send()'s and MPI-Recv()'s, and
+(2) a MPI C code,  containing a segment of code that
+(2.1) implements your technical idea for implementing the functionality of barrier using  MPI_Send()'s and MPI-Recv()'s, and
+(2.2) the code has a parallel time complexity of no more than 8 log_2 N steps, where N is the number of processes (for simplicity, you may assume N is a power of 2), and a step refers to time incurred by the sending of a message by a send and the receiving of the message by the receiver and if there are multiple pairs of simultaneous send-receive between different non-overlapping pairs of sender-receiver, it is also considered one step (please see discussions in previous 3 classes for the communication steps in implementing broadcast and many2one communications using send()'s and recv()'s ).
+
+
+Yu Zhuang
+Associate Professor
+Dept of Computer Science
+Texas Tech University
+Lubbock, Texas 79409-3104
+Phone: 806-834-7753
+Fax: 806-742-3519
+http://www.myweb.ttu.edu/yzhuang/
+
+
+
+________________________________________
+From: Zhuang, Yu
+Sent: Wednesday, September 22, 2021 1:01 PM
+To: Arca, Sevgi
+Subject: CS4379/5379 Assignment 2 due date
+
+CS 4379/5379 students,
+
+Assignment 2 was given yesterday in class.  The due date is Oct 1 (Friday) before midnight.
+
+You submission should include
+(1) a short but clear description of your technical idea, and
+(2) MPI C code with comments, that implements your technical idea.
+Each group needs to submit only one copy, but please include names of all group members in your code.
+
+
+Yu Zhuang
+Associate Professor
+Dept of Computer Science
+Texas Tech University
+Lubbock, Texas 79409-3104
+Phone: 806-834-7753
+Fax: 806-742-3519
+http://www.myweb.ttu.edu/yzhuang/
+

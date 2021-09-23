@@ -53,7 +53,8 @@ void barrier(int pid, int np)
       MPI_Recv(&message, 1, MPI_INT, leftChild, mtag, MPI_COMM_WORLD, &status);
 
     // send to parent
-    MPI_Isend(&message, 1, MPI_INT, parent, mtag, MPI_COMM_WORLD, &pReq);
+    MPI_Send(&message, 1, MPI_INT, parent, mtag, MPI_COMM_WORLD);
+    // MPI_Isend(&message, 1, MPI_INT, parent, mtag, MPI_COMM_WORLD, &pReq);
 
     // wait to recv from parent
     MPI_Recv(&message, 1, MPI_INT, parent, mtag, MPI_COMM_WORLD, &status);
@@ -62,9 +63,11 @@ void barrier(int pid, int np)
    
    // send to children
    if (rightChild < np)
-     MPI_Isend(&message, 1, MPI_INT, rightChild, mtag, MPI_COMM_WORLD, &rReq);
+     MPI_Send(&message, 1, MPI_INT, rightChild, mtag, MPI_COMM_WORLD);
+     // MPI_Isend(&message, 1, MPI_INT, rightChild, mtag, MPI_COMM_WORLD, &rReq);
    if (leftChild < np)
-     MPI_Isend(&message, 1, MPI_INT, leftChild, mtag, MPI_COMM_WORLD, &lReq);
+     MPI_Send(&message, 1, MPI_INT, leftChild, mtag, MPI_COMM_WORLD);
+     // MPI_Isend(&message, 1, MPI_INT, leftChild, mtag, MPI_COMM_WORLD, &lReq);
 
 }
 
