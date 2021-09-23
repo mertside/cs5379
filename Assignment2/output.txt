@@ -1,0 +1,1000 @@
+
+Run 1 
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+
+=========================================================
+
+Run 2 
+3 is before barrier
+3 is after barrier
+4 is before barrier
+5 is before barrier
+5 is after barrier
+6 is before barrier
+6 is after barrier
+7 is before barrier
+7 is after barrier
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+2 is before barrier
+2 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 3 
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 4 
+0 is before barrier
+1 is before barrier
+1 is after barrier
+2 is before barrier
+2 is after barrier
+3 is before barrier
+3 is after barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+6 is after barrier
+7 is before barrier
+7 is after barrier
+5 is after barrier
+0 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 5 
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+2 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+
+=========================================================
+
+Run 6 
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+
+=========================================================
+
+Run 7 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+
+=========================================================
+
+Run 8 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+6 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+5 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 9 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+3 is after barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 10 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+
+=========================================================
+
+Run 11 
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+3 is after barrier
+5 is after barrier
+6 is after barrier
+2 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 12 
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+0 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+1 is after barrier
+7 is after barrier
+
+=========================================================
+
+Run 13 
+6 is before barrier
+7 is before barrier
+0 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+1 is before barrier
+5 is before barrier
+6 is after barrier
+5 is after barrier
+0 is after barrier
+2 is after barrier
+3 is after barrier
+1 is after barrier
+7 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 14 
+2 is before barrier
+4 is before barrier
+0 is before barrier
+1 is before barrier
+3 is before barrier
+2 is after barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is after barrier
+4 is after barrier
+7 is after barrier
+1 is after barrier
+3 is after barrier
+5 is after barrier
+6 is after barrier
+
+=========================================================
+
+Run 15 
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+
+=========================================================
+
+Run 16 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 17 
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+6 is after barrier
+5 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+
+=========================================================
+
+Run 18 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+0 is after barrier
+
+=========================================================
+
+Run 19 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 20 
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+7 is after barrier
+0 is after barrier
+5 is after barrier
+6 is after barrier
+
+=========================================================
+
+Run 21 
+6 is before barrier
+6 is after barrier
+7 is before barrier
+7 is after barrier
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+2 is before barrier
+3 is before barrier
+3 is after barrier
+4 is before barrier
+4 is after barrier
+5 is before barrier
+2 is after barrier
+5 is after barrier
+
+=========================================================
+
+Run 22 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 23 
+5 is before barrier
+6 is before barrier
+6 is after barrier
+7 is before barrier
+7 is after barrier
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+2 is before barrier
+3 is before barrier
+3 is after barrier
+4 is before barrier
+4 is after barrier
+2 is after barrier
+5 is after barrier
+
+=========================================================
+
+Run 24 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+2 is after barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+5 is after barrier
+6 is before barrier
+6 is after barrier
+7 is before barrier
+0 is after barrier
+1 is after barrier
+3 is after barrier
+4 is after barrier
+7 is after barrier
+
+=========================================================
+
+Run 25 
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+3 is after barrier
+5 is after barrier
+6 is after barrier
+2 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 26 
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+2 is before barrier
+2 is after barrier
+3 is before barrier
+3 is after barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+6 is after barrier
+7 is before barrier
+7 is after barrier
+5 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 27 
+3 is before barrier
+3 is after barrier
+4 is before barrier
+5 is before barrier
+5 is after barrier
+6 is before barrier
+6 is after barrier
+7 is before barrier
+7 is after barrier
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+2 is before barrier
+2 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 28 
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+6 is after barrier
+4 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+5 is after barrier
+
+=========================================================
+
+Run 29 
+5 is before barrier
+5 is after barrier
+6 is before barrier
+6 is after barrier
+7 is before barrier
+7 is after barrier
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+2 is before barrier
+2 is after barrier
+3 is before barrier
+3 is after barrier
+4 is before barrier
+4 is after barrier
+
+=========================================================
+
+Run 30 
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+2 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+
+=========================================================
+
+Run 31 
+2 is before barrier
+2 is after barrier
+3 is before barrier
+3 is after barrier
+4 is before barrier
+5 is before barrier
+5 is after barrier
+6 is before barrier
+6 is after barrier
+7 is before barrier
+7 is after barrier
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 32 
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+2 is after barrier
+3 is before barrier
+3 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+6 is after barrier
+5 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 33 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+0 is after barrier
+
+=========================================================
+
+Run 34 
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+5 is after barrier
+6 is after barrier
+3 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 35 
+6 is before barrier
+7 is before barrier
+7 is after barrier
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+2 is before barrier
+2 is after barrier
+3 is before barrier
+3 is after barrier
+4 is before barrier
+5 is before barrier
+6 is after barrier
+5 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 36 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+7 is before barrier
+0 is after barrier
+2 is after barrier
+6 is before barrier
+6 is after barrier
+5 is after barrier
+3 is after barrier
+7 is after barrier
+1 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 37 
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+6 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+
+=========================================================
+
+Run 38 
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+7 is after barrier
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+3 is after barrier
+4 is after barrier
+2 is after barrier
+5 is after barrier
+6 is after barrier
+
+=========================================================
+
+Run 39 
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+6 is after barrier
+5 is after barrier
+7 is after barrier
+
+=========================================================
+
+Run 40 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+7 is before barrier
+6 is before barrier
+0 is after barrier
+2 is after barrier
+5 is after barrier
+6 is after barrier
+3 is after barrier
+4 is after barrier
+7 is after barrier
+1 is after barrier
+
+=========================================================
+
+Run 41 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+
+=========================================================
+
+Run 42 
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+6 is after barrier
+2 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+
+=========================================================
+
+Run 43 
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+1 is after barrier
+3 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+2 is after barrier
+7 is after barrier
+0 is after barrier
+
+=========================================================
+
+Run 44 
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+5 is after barrier
+6 is after barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 45 
+3 is before barrier
+3 is after barrier
+4 is before barrier
+5 is before barrier
+5 is after barrier
+6 is before barrier
+6 is after barrier
+7 is before barrier
+7 is after barrier
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+2 is before barrier
+2 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 46 
+4 is before barrier
+5 is before barrier
+6 is before barrier
+6 is after barrier
+7 is before barrier
+7 is after barrier
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+2 is before barrier
+2 is after barrier
+3 is before barrier
+3 is after barrier
+5 is after barrier
+4 is after barrier
+
+=========================================================
+
+Run 47 
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+7 is after barrier
+0 is after barrier
+1 is after barrier
+2 is after barrier
+4 is after barrier
+5 is after barrier
+6 is after barrier
+3 is after barrier
+
+=========================================================
+
+Run 48 
+6 is before barrier
+7 is before barrier
+7 is after barrier
+0 is before barrier
+0 is after barrier
+1 is before barrier
+1 is after barrier
+2 is before barrier
+3 is before barrier
+3 is after barrier
+4 is before barrier
+5 is before barrier
+4 is after barrier
+6 is after barrier
+2 is after barrier
+5 is after barrier
+
+=========================================================
+
+Run 49 
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+1 is after barrier
+2 is after barrier
+3 is after barrier
+4 is after barrier
+6 is after barrier
+5 is after barrier
+7 is after barrier
+0 is after barrier
+
+=========================================================
+
+Run 50 
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is after barrier
+5 is after barrier
+7 is before barrier
+7 is after barrier
+2 is after barrier
+0 is after barrier
+1 is after barrier
+6 is after barrier
+4 is after barrier
+
+=========================================================
