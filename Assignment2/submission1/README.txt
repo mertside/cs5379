@@ -7,6 +7,22 @@ Description of the solution:
     1. trapping phase, for p = 2^k
     2. release phase, for p = 2^k 
 
+  * * * * * * * *    ----------
+  |/  |/  |/  |/
+  *   *   *   *
+  | /     | /           TRAP
+  *       *
+  |   /
+  *                 
+  |                  -----------
+  *                 
+  |   \  
+  *       *
+  | \     | \          RELEASE
+  *   *   *   *
+  |\  |\  |\  |\
+  * * * * * * * *    -----------
+
 Based on the tree barier idea in: 
   https://homepages.math.uic.edu/~jan/mcs572/barriers.pdf
 
