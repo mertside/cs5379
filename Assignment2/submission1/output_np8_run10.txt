@@ -1,0 +1,420 @@
+
+Run 1 
+mpirun -np 8 ./barrier_v4.out
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+7 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+0 is after barrier
+
+ receiving message from 0 to 1
+
+1 is after barrier
+
+ receiving message from 0 to 2
+
+2 is after barrier
+
+ receiving message from 0 to 4
+
+4 is after barrier
+
+ receiving message from 1 to 5
+
+5 is after barrier
+
+ receiving message from 1 to 3
+
+3 is after barrier
+
+ receiving message from 2 to 6
+
+6 is after barrier
+
+ receiving message from 3 to 7
+
+7 is after barrier
+
+==============================================
+
+Run 2 
+mpirun -np 8 ./barrier_v4.out
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+
+ receiving message from 1 to 5
+
+5 is after barrier
+
+ receiving message from 2 to 6
+
+6 is after barrier
+
+ receiving message from 1 to 3
+
+3 is after barrier
+0 is after barrier
+
+ receiving message from 0 to 1
+
+1 is after barrier
+
+ receiving message from 0 to 2
+
+2 is after barrier
+
+ receiving message from 0 to 4
+
+4 is after barrier
+
+ receiving message from 3 to 7
+
+7 is after barrier
+
+==============================================
+
+Run 3 
+mpirun -np 8 ./barrier_v4.out
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+5 is before barrier
+4 is before barrier
+6 is before barrier
+7 is before barrier
+
+ receiving message from 1 to 3
+
+3 is after barrier
+
+ receiving message from 0 to 4
+
+4 is after barrier
+
+ receiving message from 2 to 6
+
+6 is after barrier
+
+ receiving message from 3 to 7
+
+7 is after barrier
+0 is after barrier
+
+ receiving message from 0 to 1
+
+1 is after barrier
+
+ receiving message from 0 to 2
+
+2 is after barrier
+
+ receiving message from 1 to 5
+
+5 is after barrier
+
+==============================================
+
+Run 4 
+mpirun -np 8 ./barrier_v4.out
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+
+ receiving message from 0 to 4
+
+4 is after barrier
+
+ receiving message from 1 to 5
+
+5 is after barrier
+
+ receiving message from 2 to 6
+
+6 is after barrier
+
+ receiving message from 0 to 2
+
+2 is after barrier
+0 is after barrier
+
+ receiving message from 0 to 1
+
+1 is after barrier
+
+ receiving message from 1 to 3
+
+3 is after barrier
+
+ receiving message from 3 to 7
+
+7 is after barrier
+
+==============================================
+
+Run 5 
+mpirun -np 8 ./barrier_v4.out
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is before barrier
+
+ receiving message from 0 to 4
+
+4 is after barrier
+
+ receiving message from 1 to 5
+
+5 is after barrier
+
+ receiving message from 2 to 6
+
+6 is after barrier
+0 is after barrier
+
+ receiving message from 0 to 1
+
+1 is after barrier
+
+ receiving message from 0 to 2
+
+2 is after barrier
+
+ receiving message from 1 to 3
+
+3 is after barrier
+
+ receiving message from 3 to 7
+
+7 is after barrier
+
+==============================================
+
+Run 6 
+mpirun -np 8 ./barrier_v4.out
+0 is before barrier
+1 is before barrier
+2 is before barrier
+4 is before barrier
+5 is before barrier
+3 is before barrier
+6 is before barrier
+7 is before barrier
+0 is after barrier
+
+ receiving message from 0 to 1
+
+1 is after barrier
+
+ receiving message from 1 to 5
+
+5 is after barrier
+
+ receiving message from 0 to 2
+
+2 is after barrier
+
+ receiving message from 0 to 4
+
+4 is after barrier
+
+ receiving message from 1 to 3
+
+3 is after barrier
+
+ receiving message from 2 to 6
+
+6 is after barrier
+
+ receiving message from 3 to 7
+
+7 is after barrier
+
+==============================================
+
+Run 7 
+mpirun -np 8 ./barrier_v4.out
+0 is before barrier
+1 is before barrier
+2 is before barrier
+6 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+7 is before barrier
+
+ receiving message from 2 to 6
+
+6 is after barrier
+
+ receiving message from 1 to 3
+
+3 is after barrier
+
+ receiving message from 0 to 4
+
+4 is after barrier
+
+ receiving message from 0 to 2
+
+2 is after barrier
+
+ receiving message from 1 to 5
+
+5 is after barrier
+
+ receiving message from 3 to 7
+
+7 is after barrier
+0 is after barrier
+
+ receiving message from 0 to 1
+
+1 is after barrier
+
+==============================================
+
+Run 8 
+mpirun -np 8 ./barrier_v4.out
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is after barrier
+
+ receiving message from 0 to 1
+
+1 is after barrier
+
+ receiving message from 0 to 2
+
+2 is after barrier
+
+ receiving message from 1 to 3
+
+3 is after barrier
+
+ receiving message from 0 to 4
+
+4 is after barrier
+
+ receiving message from 1 to 5
+
+5 is after barrier
+
+ receiving message from 2 to 6
+
+6 is after barrier
+
+ receiving message from 3 to 7
+
+7 is after barrier
+
+==============================================
+
+Run 9 
+mpirun -np 8 ./barrier_v4.out
+6 is before barrier
+7 is before barrier
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+
+ receiving message from 2 to 6
+
+6 is after barrier
+
+ receiving message from 1 to 5
+
+5 is after barrier
+0 is after barrier
+
+ receiving message from 0 to 1
+
+1 is after barrier
+
+ receiving message from 0 to 2
+
+2 is after barrier
+
+ receiving message from 1 to 3
+
+3 is after barrier
+
+ receiving message from 0 to 4
+
+4 is after barrier
+
+ receiving message from 3 to 7
+
+7 is after barrier
+
+==============================================
+
+Run 10 
+mpirun -np 8 ./barrier_v4.out
+0 is before barrier
+1 is before barrier
+2 is before barrier
+3 is before barrier
+4 is before barrier
+5 is before barrier
+6 is before barrier
+7 is before barrier
+0 is after barrier
+
+ receiving message from 0 to 1
+
+1 is after barrier
+
+ receiving message from 0 to 2
+
+2 is after barrier
+
+ receiving message from 1 to 3
+
+3 is after barrier
+
+ receiving message from 0 to 4
+
+4 is after barrier
+
+ receiving message from 1 to 5
+
+5 is after barrier
+
+ receiving message from 2 to 6
+
+6 is after barrier
+
+ receiving message from 3 to 7
+
+7 is after barrier
+
+==============================================
