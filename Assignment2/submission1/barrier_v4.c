@@ -5,9 +5,9 @@
 //
 // Description of the solution:
 // Implemented a tree barrier that consists of two phases:
-//   1. trapping phase, for p = 2^k
-//   2. release phase, for p = 2^k 
-// Solved in 2*log_2(n)
+//   1. trapping phase,
+//   2. release phase.
+// Solved in [2*log_2(n)]
 //
 
 #include <stdio.h>
