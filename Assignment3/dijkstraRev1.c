@@ -10,7 +10,7 @@
 #include <time.h>
 
 void dijkstra(int SOURCE, int n, int **edge, int *distance);
-void dijkstraMulticore(int SOURCE, int n, int **edge, int *distance);
+void dijkstraParallel(int SOURCE, int n, int **edge, int *distance);
 void printDistance(int* distance, int n);
 void printEdge(int** edge, int n);
 int min(int x, int y);
@@ -95,7 +95,7 @@ void dijkstra(int SOURCE, int n, int **edge, int *distance)
   free(found);
 }
 
-void dijkstraMulticore(int SOURCE, int n, int **edge, int *distance)
+void dijkstraParallel(int SOURCE, int n, int **edge, int *distance)
 {
   int i, j, count, tmp, least, leastPos, *found, pid, np;
 
