@@ -41,9 +41,11 @@ int main(int argc, char** argv)
   //printEdge(edge, n);
 
   // Get non-parallel distances
+  /*
   printDistance(distance, n);
   dijkstra(source, n, edge, distance);
   printDistance(distance, n);
+  */
 
   // Reset distances
   for (int i =0; i < n; i++)
@@ -164,7 +166,9 @@ void dijkstraParallel(int SOURCE, int n, int **edge, int *distance)
       if (i != pid)
       {
         MPI_Send(&least, 1, MPI_INT, i, 0, MPI_COMM_WORLD); // Send least to process i
+        printf("%d: Sent least to %d\n", pid, i);
         MPI_Send(&leastPos, 1, MPI_INT, i, 1, MPI_COMM_WORLD); // Send leastPos to process i
+        printf("%d: Sent leastPos to %d\n", pid, i);
       }
     }
 
@@ -174,7 +178,9 @@ void dijkstraParallel(int SOURCE, int n, int **edge, int *distance)
       if (i != pid)
       {
         MPI_Recv(&(allLeasts[i]), 1, MPI_INT, i, 0, MPI_COMM_WORLD, &status); // Recv least from process i and put in ith position in allLeasts
+        printf("%d: Recv least from %d\n", pid, i);
         MPI_Recv(&(allLeastPos[i]), 1, MPI_INT, i, i, MPI_COMM_WORLD, &status); // Recv leastPos from process i and put in ith position in allLeastPos
+        printf("%d: Recv least from %d\n", pid, i);
       }
     }
 
