@@ -9,18 +9,26 @@
 #include <mpi.h>
 #include <time.h>
 
+struct LeastGroup {
+  int least;
+  int leastPos;
+};
+
 void dijkstra(int SOURCE, int n, int **edge, int *distance);
 void dijkstraParallel(int SOURCE, int n, int **edge, int *distance);
+struct LeastGroup getLeastOfAllLeasts(struct LeastGroup group, int pid, int np);
 void printDistance(int* distance, int n);
-void printEdge(int** edge, int n);
 int min(int x, int y);
 
 int main(int argc, char** argv)
 {
   MPI_Init( &argc, &argv );
 
+  int pid;
+  MPI_Comm_rank(MPI_COMM_WORLD, &pid);
+
   int source = 3;
-  int n = 20;
+  int n = 40;
   int **edge = (int**)malloc(sizeof(int*) * n);
   int *distance = (int*)malloc(sizeof(int) * n);
   
@@ -34,18 +42,14 @@ int main(int argc, char** argv)
     edge[i] = (int*)malloc(sizeof(int) * n);
     for (int j = 0; j < n; j++)
     {
-      edge[i][j] = (rand() % 10) + 1;
+      edge[i][j] = (rand() % 100) + 1;
     }
   }
 
-  //printEdge(edge, n);
-
   // Get non-parallel distances
-  /*
-  printDistance(distance, n);
   dijkstra(source, n, edge, distance);
+  printf("Static:   (%d) ", pid);
   printDistance(distance, n);
-  */
 
   // Reset distances
   for (int i =0; i < n; i++)
@@ -54,19 +58,17 @@ int main(int argc, char** argv)
   }
 
   // Get parallel distances
-  printDistance(distance, n);
   dijkstraParallel(source, n, edge, distance);
+  printf("Parallel: (%d) ", pid);
   printDistance(distance, n);
 
   // Free memory
   free(distance);
-  /*
   for (int i = 0; i < n; i++)
   {
     free(edge[i]);
   }
   free(edge);
-  */
 
   MPI_Finalize();
   return 0;
@@ -119,7 +121,6 @@ void dijkstra(int SOURCE, int n, int **edge, int *distance)
 void dijkstraParallel(int SOURCE, int n, int **edge, int *distance)
 {
   int i, j, count, tmp, least, leastPos, *found, pid, np, *allLeasts, *allLeastPos;
-  MPI_Status status;
 
   // get MPI information
   MPI_Comm_rank(MPI_COMM_WORLD, &pid);
@@ -147,7 +148,7 @@ void dijkstraParallel(int SOURCE, int n, int **edge, int *distance)
     least = 987654321; // infinitly large distance
 
     // find the minimum distance vertex
-    for(i = start; i < end; i++) 
+    for(i = start; i <= end; i++) 
     {
       tmp = distance[i];
       if( (!found[i]) && (tmp < least) ) 
@@ -157,55 +158,21 @@ void dijkstraParallel(int SOURCE, int n, int **edge, int *distance)
       }
     }
 
-    // collect all leasts and leastPos to find global least and leastPos
+    // Send to pid 0 least and leastPos
+    struct LeastGroup send, recv;
+    send.least = least;
+    send.leastPos = leastPos;
 
-    // send own least and leastPos to all other processes
+    // Recv from pid 0 the least of all leasts and leastPos
+    recv = getLeastOfAllLeasts(send, pid, np);
 
-    for (int i = 0; i < np; i++)
-    {
-      if (i != pid)
-      {
-        MPI_Send(&least, 1, MPI_INT, i, 0, MPI_COMM_WORLD); // Send least to process i
-        printf("%d: Sent least to %d\n", pid, i);
-        MPI_Send(&leastPos, 1, MPI_INT, i, 1, MPI_COMM_WORLD); // Send leastPos to process i
-        printf("%d: Sent leastPos to %d\n", pid, i);
-      }
-    }
-
-    // collect leasts and leastPos from all other processes
-    for (int i = 0; i < np; i++)
-    {
-      if (i != pid)
-      {
-        MPI_Recv(&(allLeasts[i]), 1, MPI_INT, i, 0, MPI_COMM_WORLD, &status); // Recv least from process i and put in ith position in allLeasts
-        printf("%d: Recv least from %d\n", pid, i);
-        MPI_Recv(&(allLeastPos[i]), 1, MPI_INT, i, i, MPI_COMM_WORLD, &status); // Recv leastPos from process i and put in ith position in allLeastPos
-        printf("%d: Recv least from %d\n", pid, i);
-      }
-    }
-
-    // append own least and leastPos to the list
-    allLeasts[pid] = least;
-    allLeastPos[pid] = leastPos;
-
-    // get least of allLeasts
-    int leastAllLeastPos = 0;
-    for (int i = 1; i < np; i++) 
-    {
-      if(allLeasts[leastAllLeastPos] > allLeasts[i])
-      {
-        leastAllLeastPos = i;
-      }
-    }
-
-    // save global least and least pos
-    least = allLeasts[leastAllLeastPos];
-    leastPos = allLeastPos[leastAllLeastPos];
+    least = recv.least;
+    leastPos = recv.leastPos;
 
     found[leastPos] = 1;
     count++;
     // update the distances for all  nodes
-    for(i = start; i < end; i++) 
+    for(i = start; i <= end; i++) 
     {
       if( (!found[i]) )
       {
@@ -213,8 +180,116 @@ void dijkstraParallel(int SOURCE, int n, int **edge, int *distance)
       }
     }
   } /*** End of while ***/
+
+  // Combine calculated distances
+  MPI_Status status;
+
+  if (pid == 0)
+  {
+    // Create the correct distance array in pid 0
+    for (int i = end + 1; i < n; i++)
+    {
+      // Find which pid provides the result
+      int providerPID = 0;
+      for (int j = 1; j < np; j++)
+      {
+        int start = (j * n) / np;
+        int end = (((j + 1) * n) / np) - 1;
+
+        if (i >= start && i <= end)
+        {
+          providerPID = j;
+          break;
+        }
+      }
+
+      // Recv the correct result from the providerPID
+      MPI_Recv(&(distance[i]), 1, MPI_INT, providerPID, i, MPI_COMM_WORLD, &status);
+    }
+
+    // Send back the correct distance array to all other pids
+    for (int i = 1; i < np; i++)
+    {
+      MPI_Send(distance, n, MPI_INT, i, 0, MPI_COMM_WORLD);
+    }
+  }
+  else
+  {
+    // Send to pid 0 calculated values for its chunk
+    for (int i = start; i <= end; i++)
+    {
+      MPI_Send(&(distance[i]), 1, MPI_INT, 0, i, MPI_COMM_WORLD);
+    }
+
+    // Recv the entire correct array from pid 0
+    MPI_Recv(distance, n, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+  }
+
   free(allLeasts);
   free(found); 
+}
+
+struct LeastGroup getLeastOfAllLeasts(struct LeastGroup group, int pid, int np)
+{
+  MPI_Status status;
+
+  struct LeastGroup* groups = (struct LeastGroup*)malloc(sizeof(struct LeastGroup) * np);
+
+  if (pid == 0)
+  {
+    // Add pid0s group to the list
+    groups[0] = group;
+
+    // Get all other pids groups
+    for (int i = 1; i < np; i++)
+    {
+      int least, leastPos;
+      MPI_Recv(&least, 1, MPI_INT, i, 0, MPI_COMM_WORLD, &status); // Recv least from process i and put in ith position in groups
+      MPI_Recv(&leastPos, 1, MPI_INT, i, 1, MPI_COMM_WORLD, &status); // Recv least from process i and put in ith position in groups
+
+      struct LeastGroup newGroup;
+      newGroup.least = least;
+      newGroup.leastPos = leastPos; 
+      groups[i] = newGroup;
+    }
+
+    // Get the least group of all leasts
+    int leastOfLeastPos = 0;
+    for (int i = 1; i < np; i++)
+    {
+      if (groups[i].least < groups[leastOfLeastPos].least)
+      {
+        leastOfLeastPos = i;
+      }
+    }
+
+    // Send the least group back
+    for (int i = 1; i < np; i++)
+    {
+      MPI_Send(&(groups[leastOfLeastPos].least), 1, MPI_INT, i, 0, MPI_COMM_WORLD);
+      MPI_Send(&(groups[leastOfLeastPos].leastPos), 1, MPI_INT, i, 1, MPI_COMM_WORLD);
+    }
+
+    // Return to pid 0 the least group
+    return groups[leastOfLeastPos];
+  }
+  else
+  {
+    // Send to pid 0 its group
+    MPI_Send(&(group.least), 1, MPI_INT, 0, 0, MPI_COMM_WORLD); // Send least to process 0
+    MPI_Send(&(group.leastPos), 1, MPI_INT, 0, 1, MPI_COMM_WORLD); // Send leastPos to process 0
+
+    // Recv the least group from pid 0 
+    int least, leastPos;
+    MPI_Recv(&least, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status); // Recv least from process 0 and put in group
+    MPI_Recv(&leastPos, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status); // Recv least from process 0 and put in group
+
+    // Return the least group
+    struct LeastGroup newGroup;
+    newGroup.least = least;
+    newGroup.leastPos = leastPos;
+    return newGroup;
+  }
 }
 
 void printDistance(int* distance, int n)
@@ -222,22 +297,9 @@ void printDistance(int* distance, int n)
   printf("[");
   for (int i = 0; i < n; i++)
   {
-    printf("%d, ", distance[i]);
+    printf("%2d, ", distance[i]);
   }
   printf("]\n");
-}
-
-void printEdge(int** edge, int n)
-{
-  for (int i = 0; i < n; i++)
-  {
-    printf("[");
-    for (int j = 0; j < n; j++)
-    {
-      printf("%d, ", edge[i][j]);
-    }
-    printf("]\n");
-  }
 }
 
 int min(int x, int y)
