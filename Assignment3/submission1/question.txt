@@ -1,0 +1,30 @@
+CS5379 - Assignment #3
+
+From: Zhuang, Yu <Yu.Zhuang@ttu.edu>
+Date: Wednesday, October 6, 2021 at 15:50
+To: Arca, Sevgi <Sevgi.Arca@ttu.edu>
+Subject: CS4379/5379 Assignment 3
+Dear students,
+
+Attached is the code we discussed in yesterday's class, and we identified the loops for parallelizations are the two for-loops inside the while-loop.
+Assignment 3 is to parallelize the code on a system with general p number of processes in  a way
+that each process computes 1/p of the entries of the array distance[], e.g.
+process 0 computes distance from distance[0] thru distance [n/p - 1], .
+process 1 computes distance from distance[n/p] thru distance [2n/p - 1],
+process 2 computes distance from distance[2n/p] thru distance [3n/p - 1],
+...
+The due date is Oct 15 (Friday) before midnight.
+
+In tomorrow's class, I will discuss some not-so-good assumptions you may use to make the parallelization easy for this project.  In later projects, we will gradually remove such assumptions for more professional parallelization practices.
+
+
+Yu Zhuang
+Associate Professor
+Dept of Computer Science
+Texas Tech University
+Lubbock, Texas 79409-3104
+Phone: 806-834-7753
+Fax: 806-742-3519
+http://www.myweb.ttu.edu/yzhuang/
+
+
