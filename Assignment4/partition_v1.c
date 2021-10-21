@@ -24,8 +24,13 @@ int main(int argc, char** argv)
   MPI_Comm_rank(MPI_COMM_WORLD, &pid);
 
   // TODO: define data: D0, D
+  int *d = (int*) malloc(sizeof(int));
+  int *d0 = (int*) malloc(sizeof(int));
 
   partition(); 
+  
+  free(d);
+  free(d0);
 
   MPI_Finalize();
   return 0;
