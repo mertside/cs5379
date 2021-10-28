@@ -14,52 +14,142 @@
 #include <stdlib.h>
 #include <mpi.h>
 #include <time.h>
+#include <math.h>
+
+int** partition(int** d, int n, int p);
+int min(int x, int y);
+void printD(int** d, int n);
 
 // ===================================MAIN====================================
 int main(int argc, char** argv)
 {
   MPI_Init( &argc, &argv );
 
-  int pid;
+  // get mpi stuff
+  int pid, np;
   MPI_Comm_rank(MPI_COMM_WORLD, &pid);
+  MPI_Comm_size(MPI_COMM_WORLD, &np);
 
-  // TODO: define data: D0, D
-  int *d = (int*) malloc(sizeof(int));
-  int *d0 = (int*) malloc(sizeof(int));
+  int n = (int)sqrt((double)np);
 
-  partition(); 
+  if ((n * n) != np)
+  {
+    return 1;
+  }
+
+  // define d0 and d
+  int **d = (int**)malloc(sizeof(int*) * n);
+  int **d0;
+  for (int i = 0; i < n; i++)
+  {
+    d[i] = (int*)malloc(sizeof(int) * n);
+  }
+
+  // rand d
+  srand(time(NULL));
+
+  for (int i = 0; i < n; i++)
+  {
+    for (int j = 0; j < n; j++)
+    {
+      if (i == j)
+        d[i][j] = 0;
+      else
+        d[i][j] = (rand() % 100) + 1;
+    }
+  }
+
+  // partition
   
+  if(pid == 0)
+    printD(d, n);
+  d0 = partition(d, n, np); 
+
+  if(pid == 0)
+  {
+    printf("------\n");
+    printD(d0, n);
+  }
+  
+  // clean
+  /*
+  for (int i = 0; i < n; i++)
+  {
+    free(d[i]);
+    free(d0[i]);
+  }
   free(d);
   free(d0);
+  */
 
   MPI_Finalize();
   return 0;
 }
 
 // =============================PARTITION PARALLEL=============================
-void partition(/* TODO */)
+int** partition(int** d, int n, int p)
 {
-  int i, j, k;
+  int i, j, k, pid;
+  MPI_Status status;
+
+  // alloc d0
+  int **d0 = (int**) malloc(sizeof(int*) * n);
+  for (int i = 0; i < n; i++)
+  {
+    d0[i] = (int*)malloc(sizeof(int) * n);
+  }
 
   // get MPI information
   MPI_Comm_rank(MPI_COMM_WORLD, &pid);
-  MPI_Comm_size(MPI_COMM_WORLD, &np);
 
-  for(k = 0; k < n; k++) {
-    for(i = 0; i < n; i++) {
-      for(j = 0; j < n; j++) {
-        D[i][j] = min(D0[i][j], D0[i][k] + D0[k][j]);
-      } // END for j
-    } // END for i
+  for(k = 0; k < n; k++) 
+  {
+    // get position from pid
+    i = pid / n;
+    j = pid % n;
 
-    for(i = 0; i < n; i++) {
-      for(j = 0; j < n; j++) {
-        D0[i][j] = D[i][j];
-      } // END for j
-    } // END for i
+    // Calculate local 
+    d[i][j] = min(d0[i][j], d0[i][k] + d0[k][j]);
+    // Rebuild d0
+    if(pid == 0)
+    {
+      // Gather all data
+      for(i = 0; i < n; i++)
+      {
+        for (j = 0; j < n; j++)
+        {
+          if (!(i == 0 && j == 0))
+          {
+            int temp;
+            MPI_Recv(&temp, 1, MPI_INT, (i * n) + j, 0, MPI_COMM_WORLD, &status);
+            d0[i][j] = temp;
+          }
+        }
+      }
+      // Send data
 
+      for(int row = 0; row < n; row++) // send row
+      {
+        for(int dest = 1; dest < p; dest++) // to dest pid
+        {
+          MPI_Send(d0[row], n, MPI_INT, dest, row, MPI_COMM_WORLD);
+        }
+      }
+    }
+    else
+    {
+      // Send local data
+      MPI_Send(&d[i][j], 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
+
+      // Recv data from 0
+      for(int row = 0; row < n; row++)
+      {
+        MPI_Recv(d0[row], n, MPI_INT, 0, row, MPI_COMM_WORLD, &status);
+      }
+    }
   } // END for k
 
+  return d0;
 }
 
 // ==================================min======================================
@@ -71,4 +161,17 @@ int min(int x, int y)
     return y;
 }
 
+// ================================printD===================================
+void printD(int** d, int n)
+{
+  for (int i = 0; i < n; i++)
+  {
+    for (int j = 0; j < n; j++)
+    {
+      printf("%2d, ", d[i][j]);
+    }
+    printf("\n");
+  }
+  printf("\n");
+}
 // ===================================END=====================================
