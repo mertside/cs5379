@@ -38,11 +38,11 @@ int main(int argc, char** argv)
   }
 
   // define d0 and d
-  int **d = (int**)malloc(sizeof(int*) * n);
-  int **d0;
+  int **d0 = (int**)malloc(sizeof(int*) * n);
+  int **d;
   for (int i = 0; i < n; i++)
   {
-    d[i] = (int*)malloc(sizeof(int) * n);
+    d0[i] = (int*)malloc(sizeof(int) * n);
   }
 
   // rand d
@@ -53,22 +53,22 @@ int main(int argc, char** argv)
     for (int j = 0; j < n; j++)
     {
       if (i == j)
-        d[i][j] = 0;
+        d0[i][j] = 0;
       else
-        d[i][j] = (rand() % 100) + 1;
+        d0[i][j] = (rand() % 100) + 1;
     }
   }
 
   // partition
   
   if(pid == 0)
-    printD(d, n);
-  d0 = partition(d, n, np); 
+    printD(d0, n);
+  d = partition(d0, n, np); 
 
   if(pid == 0)
   {
     printf("------\n");
-    printD(d0, n);
+    printD(d, n);
   }
   
   // clean
@@ -87,16 +87,16 @@ int main(int argc, char** argv)
 }
 
 // =============================PARTITION PARALLEL=============================
-int** partition(int** d, int n, int p)
+int** partition(int** d0, int n, int p)
 {
   int i, j, k, pid;
   MPI_Status status;
 
   // alloc d0
-  int **d0 = (int**) malloc(sizeof(int*) * n);
+  int **d = (int**) malloc(sizeof(int*) * n);
   for (int i = 0; i < n; i++)
   {
-    d0[i] = (int*)malloc(sizeof(int) * n);
+    d[i] = (int*)malloc(sizeof(int) * n);
   }
 
   // get MPI information
@@ -118,7 +118,11 @@ int** partition(int** d, int n, int p)
       {
         for (j = 0; j < n; j++)
         {
-          if (!(i == 0 && j == 0))
+          if (i == 0 && j == 0)
+          {
+            d0[i][j] = d[i][j];
+          }
+          else
           {
             int temp;
             MPI_Recv(&temp, 1, MPI_INT, (i * n) + j, 0, MPI_COMM_WORLD, &status);
@@ -126,8 +130,10 @@ int** partition(int** d, int n, int p)
           }
         }
       }
-      // Send data
 
+      //printD(d)
+
+      // Send data
       for(int row = 0; row < n; row++) // send row
       {
         for(int dest = 1; dest < p; dest++) // to dest pid
@@ -136,7 +142,7 @@ int** partition(int** d, int n, int p)
         }
       }
     }
-    else
+    else // ! pid 0
     {
       // Send local data
       MPI_Send(&d[i][j], 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
