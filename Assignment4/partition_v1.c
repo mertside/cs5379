@@ -114,20 +114,24 @@ int** partition(int** d0, int n, int p)
     if(pid == 0)
     {
       // Gather all data
-      for(i = 0; i < n; i++)
+      for(int row = 0; row < n; row++)
       {
-        for (j = 0; j < n; j++)
+        for (int col = 0; col < n; col++)
         {
-          if (i == 0 && j == 0)
-          {
-            d0[i][j] = d[i][j];
-          }
-          else
+          if (!(row == 0 && col == 0))
           {
             int temp;
-            MPI_Recv(&temp, 1, MPI_INT, (i * n) + j, 0, MPI_COMM_WORLD, &status);
-            d0[i][j] = temp;
+            MPI_Recv(&temp, 1, MPI_INT, (row * n) + col, 0, MPI_COMM_WORLD, &status);
+            d[row][col] = temp;
           }
+        }
+      }
+
+      for(int row = 0; row < n; row++)
+      {
+        for(int col = 0; col < n; col++)
+        {
+          d0[row][col] = d[row][col];
         }
       }
 
@@ -155,7 +159,7 @@ int** partition(int** d0, int n, int p)
     }
   } // END for k
 
-  return d0;
+  return d;
 }
 
 // ==================================min======================================
