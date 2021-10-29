@@ -102,12 +102,12 @@ int** partition(int** d0, int n, int p)
   // get MPI information
   MPI_Comm_rank(MPI_COMM_WORLD, &pid);
 
+  // get position from pid
+  i = pid / n;
+  j = pid % n;
+
   for(k = 0; k < n; k++) 
   {
-    // get position from pid
-    i = pid / n;
-    j = pid % n;
-
     // Calculate local 
     d[i][j] = min(d0[i][j], d0[i][k] + d0[k][j]);
     // Rebuild d0
