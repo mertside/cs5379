@@ -1,0 +1,27 @@
+Project 5. Parallelize the force calculation for n particles so that 
+           the computation loads on all processes are balanced, and 
+           commuication cost has a complexity of O(n log_2 p) for 
+           n particles and p processors.
+
+#define sgn(x)		( ((x)<0.0) ? (-1.0) : (1.0) )
+#define c1		1.23456
+#define c2		6.54321
+#define n		123456
+
+/* Input: n, x[n]. Note that x[i] \not= x[j] for different i, j.
+   Output: f[n].
+*/
+void calc-force(int n, double *x, double *f) 
+{
+   int i,j;
+   double diff, tmp;
+   for(i=0; i<n; i++) f[i] = 0.0;
+   
+   for(i=1; i<n; i++)
+      for(j=0; j<i; j++) {
+	 diff = x[i] - x[j] ;
+         tmp = c1/(diff*diff*diff) - c2*sgn(x)/(diff*diff) ;
+         f[i] += tmp;
+         f[j] -= tmp;
+      }
+}
