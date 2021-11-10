@@ -1,3 +1,2 @@
 #.gitignore
 .DS_store
-*/.clang-format
