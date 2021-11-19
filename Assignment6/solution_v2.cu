@@ -85,6 +85,7 @@ int main(int argc, char **argv)
   }
 
   // Run sequential
+  
   // Print out
 
   // Get number of blocks and threads per block
