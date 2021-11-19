@@ -18,9 +18,9 @@ __global__ void minimize_matrix(int **D, int n)
     int *hbuf = (int *)malloc(sizeof(int) * n);
 
     // Current thread start
-    int i_start = (blockIdx.x * blockDim.x + theadIdx.x) * (n / p);
+    int i_start = (blockIdx.x * blockDim.x + threadIdx.x) * (n / p);
     // Next thread start
-    int i_end = (blockIdx.x * blockDim.x + theadIdx.x + 1) * (n / p);
+    int i_end = (blockIdx.x * blockDim.x + threadIdx.x + 1) * (n / p);
 
     for (int k = 0; k < n; k++)
     {
@@ -36,6 +36,36 @@ __global__ void minimize_matrix(int **D, int n)
         for (int i = i_start; i < i_end; i++)
         {
             for (int j = 0; j < n; j++)
+            {
+                D[i][j] = min(D[i][j], vbuf[i] + hbuf[j]);
+            }
+        }
+    }
+}
+
+__host__ void sequential_minimize_matrix(int **D, int n)
+{
+    int i, j, k, *hbuf, *vbuf;
+
+    /*** hbuf[n], vbuf[n]:  local buffers used in the alg. ***/
+    hbuf = (int *)malloc(n);
+    vbuf = (int *)malloc(n);
+
+    for (k = 0; k < n; k++)
+    {
+        for (i = 0; i < n; i++)
+        {
+            vbuf[i] = D[i][k];
+        }
+
+        for (j = 0; j < n; j++)
+        {
+            hbuf[j] = D[k][j];
+        }
+
+        for (i = 0; i < n; i++)
+        {
+            for (j = 0; j < n; j++)
             {
                 D[i][j] = min(D[i][j], vbuf[i] + hbuf[j]);
             }
@@ -76,7 +106,17 @@ int main(int argc, char **argv)
     int threadsPerBlock = 16;
     int blocks = n / threadsPerBlock;
 
+    // Cuda malloc
+    int ***d_D;
+    int *d_n;
+
+    cudaMalloc((void ***)&d_D, n * sizeof(int *));
+    for (int i = 0; i < n; i++)
+    {
+        cudaMalloc((void **)(&d_D)[i], n * sizeof(int));
+    }
+
     // Run parallel
-    minimize_matrix<<<blocks, threadsPerBlock>>>(D);
+    minimize_matrix<<<blocks, threadsPerBlock>>>(D, n);
     // Print out
 }
