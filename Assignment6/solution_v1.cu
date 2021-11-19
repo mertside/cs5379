@@ -1,7 +1,61 @@
-/*** Hierarchical Thread Structure: multiple blocks ***/
+// CS5379: Parallel Processing - Assignment 6
+// 
+// by Tyler JOHNSON and Mert SIDE
+// on 20211118
+//
+
+/*****************************************************************************
+ * Write a CUDA code that parallelizes the sequential pseudo code given below 
+ *   so that each thread working on updating a sub-matrix of size n/p x n, 
+ *   where p is the total number of threads. Use multiple thread blocks and 
+ *   multiple threads in each block. You may assume n divisible by the total 
+ *   number of threads.
+ * 
+ * Input:  
+ *         D, n x n matrix with 0 on diagonal, positive values other places
+ * Output: 
+ *         D, n x n matrix
+ *****************************************************************************/
+
 
 #include <stdio.h>
 #include <stdlib.h>
+
+// ==================================min======================================
+/*
+__host__ int min(int x, int y)
+{
+  if (x < y)
+    return x;
+  else
+    return y;
+}
+*/
+
+__host__ void sequential_minimize_matrix(int **D, int n)
+{
+  int i, j, k, *hbuf, *vbuf;
+
+  /*** hbuf[n], vbuf[n]:  local buffers used in the alg. ***/
+  hbuf = (int *) malloc(n);
+  vbuf = (int *) malloc(n);
+
+  for(k = 0; k < n; k++) { 
+    for(i = 0; i < n; i++) { 
+      vbuf[i] = D[i][k];
+    }
+    
+    for(j = 0; j < n; j++) { 
+      hbuf[j] = D[k][j];
+    }
+      
+    for(i = 0; i < n; i++) {
+      for(j = 0; j < n; j++) {
+        D[i][j] = min(D[i][j], vbuf[i] + hbuf[j]);
+      }
+    }
+  }
+}
 
 __global__  void add(int n, int *a, int *b, int *c) 
 {
