@@ -164,10 +164,10 @@ int main(int argc, char **argv)
   }
 
   // Run sequential
-  //sequential_minimize_matrix(D,n);
+  sequential_minimize_matrix(D,n);
   // Print out
-  //printf("(sequential) Array:\n");
-  //printD(D, n);
+  printf("(sequential) Array:\n");
+  printD(D, n);
 
   // Get number of blocks and threads per block
   int threadsPerBlock = 16;

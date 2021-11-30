@@ -155,7 +155,7 @@ int main(int argc, char **argv)
   printf("(initial) Array:\n");
   printD(D, n);
 
-  // copy D to d_D
+  // copy D to h_D
   h_D = (int **)malloc(sizeof(int *) * n);
   //h_D = (my_arr *)malloc(dsize);
   for (int i = 0; i < n; i++) {
@@ -166,19 +166,19 @@ int main(int argc, char **argv)
   }
 
   // Run sequential
-  //sequential_minimize_matrix(D,n);
+  sequential_minimize_matrix(D,n);
   // Print out
-  //printf("(sequential) Array:\n");
-  //printD(D, n);
+  printf("(sequential) Array:\n");
+  printD(D, n);
   
   // Get number of blocks and threads per block
   int threadsPerBlock = 16;
   int blocks = n / threadsPerBlock;
 
   // Cuda malloc
-  CUDA_RT_CALL(cudaMalloc(d_D, n*sizeof(int*)));  
+  CUDA_RT_CALL(cudaMalloc((void ***)&d_D, n*sizeof(int*)));  
   for(int i = 0 ; i < n ; i++)    {  
-    CUDA_RT_CALL(cudaMalloc((void **)&h_D[i], n * sizeof(int))); 
+    CUDA_RT_CALL(cudaMalloc((void **)&d_D[i], n * sizeof(int))); 
   }
   
   // memcopies to GPU
