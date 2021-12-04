@@ -172,7 +172,9 @@ int main(int argc, char **argv)
   printD(D, n);
 
   // Free
-  cudaFree(d_D);
-  free(D);
-  free(h_D);
+  //cudaFree(d_D);
+  //free(D);
+  //free(h_D);
+
+  return 0;
 }
